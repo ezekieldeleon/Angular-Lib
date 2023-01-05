@@ -1,9 +1,11 @@
-
-
 .container {
   margin: 0 auto;
   max-width: 300px;
   padding-top:65px;
+}
+
+.auth-modal .modal-body {
+  min-width: 400px;
 }
 
 label {

@@ -89,7 +89,8 @@
             "exclude": []
           }
         }
-      }
+      },
+      "prefix": ""
     },
     "au-modal-e2e": {
       "root": "",
@@ -118,11 +119,11 @@
   "defaultProject": "au-modal",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
+      "prefix": "",
       "styleext": "css"
     },
     "@schematics/angular:directive": {
-      "prefix": "app"
+      "prefix": ""
     }
   }
 }
