@@ -7,6 +7,10 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
 
+  loginActive = true;
 
+  setLoginActive(loginActive) {
+    this.loginActive = loginActive;
+  }
 
 }

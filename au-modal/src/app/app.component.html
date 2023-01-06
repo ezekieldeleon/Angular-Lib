@@ -2,7 +2,7 @@
   <ul class="top-menu disable-link-styles">
     <li class="logo-small-container">
       <a class="v-center-block-parent">
-        <img class="v-center-block logo-small angular-university-logo"
+        <img alt="logo" class="v-center-block logo-small angular-university-logo"
           src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png" data-pin-nopin="true">
 
       </a>
@@ -19,9 +19,10 @@
 
     <h1>Modal Examples</h1>
 
-    <ng-template #authModalBody>
+    <ng-template #authModalBody let-title="title" let-loginTabActive="loginTabActive">
+      <h5>{{title}}</h5>
       <au-tab-panel>
-        <au-tab title="Login">
+        <au-tab title="Login" [selected]="loginTabActive">
           <form>
             <div class="form-field">
               <au-fa-input id="email-field" icon="envelope">
@@ -35,7 +36,7 @@
             </div>
           </form>
         </au-tab>
-        <au-tab title="Sign Up">
+        <au-tab title="Sign Up" [selected]="!loginTabActive">
           <form>
             <div class="form-field">
               <au-fa-input icon="envelope">
@@ -57,14 +58,19 @@
       </au-tab-panel>
     </ng-template>
 
-    <au-modal class="auth-modal" [body]="authModalBody" *auModalOpenOnClick="[loginButton, signUpButton]">
+    <au-modal #modal [hideOnClickOutside]="false" class="auth-modal" [body]="authModalBody"
+      [context]="{title: 'Login or Sign Up', loginTabActive: loginActive}"
+      *auModalOpenOnClick="[loginButton, signUpButton]" [hideOnEsc]="true">
+      <i class="fa fa-times" (click)="modal.closeModal()"></i>
     </au-modal>
 
     <div class="modal-buttons">
 
-      <button #loginButton>Login</button>
+      <button #loginButton (click)="setLoginActive(true)">Login</button>
 
-      <button #signUpButton>Sign Up</button>
+      <button #signUpButton (click)="setLoginActive(false)">Sign Up</button>
+
+      <button id="testButton" #testButton>Test Button</button>
 
     </div>
 
